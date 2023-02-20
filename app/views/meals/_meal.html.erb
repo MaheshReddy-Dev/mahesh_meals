@@ -1,0 +1,34 @@
+<div id="<%= dom_id meal %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= meal.name %>
+  </p>
+
+  <p class="my-5">
+  <strong class="block font-medium mb-1">Ingredients:</strong>
+  <% if meal.ingredients.present? %>
+    <%= meal.ingredients %>
+  <% else %>
+    None
+  <% end %>
+</p>
+
+ 
+  <p class="my-3 font-medium">Information:</p>
+<% if meal.meal_recipes.present? %>
+  <ol class="ml-6">
+    <% meal.meal_recipes.each do |recipe| %>
+      <li>- The recipe type is <strong><%= recipe.name %></strong> and the origin is <strong><%= recipe.recipe_origin.name %></strong></li>
+    <% end %>
+  </ol>
+<% else %>
+  <p>No information added.</p>
+<% end %>
+
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this meal", meal, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this meal', edit_meal_path(meal), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

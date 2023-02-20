@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  username: <%= Rails.application.credentials.database[:username] %>
+  password: <%= Rails.application.credentials.database[:password] %>
+  host: localhost
+  database: mahesh_meals_development
+
+test:
+  <<: *default
+  username: <%= Rails.application.credentials.database[:username] %>
+  password: <%= Rails.application.credentials.database[:password] %>
+  host: localhost
+  database: mahesh_meals_app_test
+
+production:
+  <<: *default
+  database: mahesh_meals_production
+  username: mahesh_meals
+  password: <%= ENV["MAHESH_MEALS_DATABASE_PASSWORD"] %>

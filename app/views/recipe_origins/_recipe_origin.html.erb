@@ -1,0 +1,17 @@
+<div id="<%= dom_id recipe_origin %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= recipe_origin.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Meal recipe:</strong>
+    <%= recipe_origin.meal_recipe.name %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this recipe origin", recipe_origin, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this recipe origin', edit_recipe_origin_path(recipe_origin), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

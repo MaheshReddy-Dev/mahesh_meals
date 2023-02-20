@@ -1,0 +1,2 @@
+module RecipeOriginsHelper
+end
