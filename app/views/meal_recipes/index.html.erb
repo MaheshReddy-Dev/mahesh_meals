@@ -11,8 +11,14 @@
     <%= link_to 'New meal recipe', new_meal_recipe_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
     <% end %> 
   </div>
-
+ 
+  <% if @meal_recipes.any? %>
   <div id="meal_recipes" class="min-w-full">
     <%= render @meal_recipes %>
   </div>
+   <% else %>
+   <div class="flex justify-center items-center h-screen">
+     <p class="text-center text-gray-400 text-3xl font-bold">No recipe found</p>
+   </div>
+<% end %>
 </div>

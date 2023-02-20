@@ -13,8 +13,14 @@
   </div>
   
 
+  <% if @meals.any? %>
   <div id="meals" class="min-w-full">
     <%= render @meals %>
   </div>
+   <% else %>
+   <div class="flex justify-center items-center h-screen">
+     <p class="text-center text-gray-400 text-3xl font-bold">No meals found</p>
+   </div>
+<% end %>
 </div>
 

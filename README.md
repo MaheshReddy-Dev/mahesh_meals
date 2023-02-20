@@ -22,3 +22,13 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+<div class="flash-container">
+  <% flash.each do |flash_type, message| %>
+    <div class="flash-message <%= flash_type %>"
+      data-controller="removals"
+      data-action="animationend->removals#remove"
+    >
+      <%= message %>
+    </div>
+  <% end %>
+</div>

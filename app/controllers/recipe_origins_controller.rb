@@ -28,7 +28,7 @@ class RecipeOriginsController < ApplicationController
         if request.referrer == recipe_origins_url
           format.turbo_stream { flash.now[:notice] = "#{@recipe_origin.name} was successfully Updated." }
         else
-          format.html { redirect_to recipe_origin_url(@meal_recipe), notice: "#{@recipe_origin.name} was successfully created." }
+          format.html { redirect_to recipe_origin_url(@recipe_origin), notice: "#{@recipe_origin.name} was successfully created." }
         end
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -11,8 +11,14 @@
     <%= link_to 'New recipe origin', new_recipe_origin_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
     <% end %>
   </div>
-
+  
+  <% if @recipe_origins.any? %>
   <div id="recipe_origins" class="min-w-full">
     <%= render @recipe_origins %>
   </div>
+   <% else %>
+   <div class="flex justify-center items-center h-screen">
+     <p class="text-center text-gray-400 text-3xl font-bold">No origins found</p>
+   </div>
+<% end %>
 </div>
