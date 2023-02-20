@@ -3,4 +3,5 @@
 <% end %>
 <%= turbo_stream.replace "meal_recipe_form" do %>
  <%= render "form", meal_recipe: MealRecipe.new %>
+ <%= render_turbo_stream_flash_messages %>
 <% end %>

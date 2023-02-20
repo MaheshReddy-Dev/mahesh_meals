@@ -1,15 +1,43 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.flash-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 9999;
+  }
+  
+  .flash-message {
+    padding: 16px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    transition: opacity 0.2s ease-in-out;
+    text-shadow: 1px 1px #000;
+    animation: fadeOut 2s ease-in-out forwards;
+  }
+  
+  .flash-message.notice {
+    background-color: #2196f3;
+  }
+  
+  .flash-message.success {
+    background-color: #4caf50;
+  }
+  
+  .flash-message.alert {
+    background-color: #f44336;
+  }
+  
+  .flash-message {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  

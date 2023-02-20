@@ -1,3 +1,4 @@
 <%= turbo_stream.update @meal_recipe do %>
     <%= render @meal_recipe %>
+    <%= render_turbo_stream_flash_messages %>
 <% end %> 

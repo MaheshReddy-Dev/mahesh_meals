@@ -20,7 +20,7 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       if @meal.save
-        format.turbo_stream
+        format.turbo_stream {flash.now[:success] = "#{@meal.name} was successfully created."}
         format.html { redirect_to meal_url(@meal), notice: "Meal was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -32,7 +32,7 @@ class MealsController < ApplicationController
   def update
     respond_to do |format|
       if @meal.update(meal_params)
-
+        format.turbo_stream {flash.now[:notice] = "#{@meal.name} was successfully Updated."}
         format.html { redirect_to meal_url(@meal), notice: "Meal was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class MealsController < ApplicationController
     @meal.destroy
 
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream { flash.now[:alert] = "#{@meal.name} was succesfully destroyed" }
       format.html { redirect_to meals_url, notice: "Meal was successfully destroyed." }
     end
   end
@@ -57,4 +57,5 @@ class MealsController < ApplicationController
     def meal_params
       params.require(:meal).permit(:name)
     end
+  
 end
