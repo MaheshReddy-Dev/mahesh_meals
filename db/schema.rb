@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_064125) do
     t.bigint "meal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "ingredients"
     t.index ["meal_id"], name: "index_meal_recipes_on_meal_id"
   end
 
@@ -26,7 +27,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_064125) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "ingredients"
   end
 
   create_table "recipe_origins", force: :cascade do |t|

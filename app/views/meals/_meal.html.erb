@@ -3,16 +3,6 @@
     <strong class="block font-medium mb-1">Name:</strong>
     <%= meal.name %>
   </p>
-
-  <p class="my-5">
-  <strong class="block font-medium mb-1">Ingredients:</strong>
-  <% if meal.ingredients.present? %>
-    <%= meal.ingredients %>
-  <% else %>
-    None
-  <% end %>
-</p>
-
  
   <p class="my-3 font-medium">Information:</p>
 <% if meal.meal_recipes.present? %>
