@@ -1,16 +1,15 @@
-<div id="<%= dom_id meal_recipe %>">
+<%= turbo_frame_tag meal_recipe do %>
   <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= meal_recipe.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Meal:</strong>
+    <strong >Meal:</strong><br/>
     <%= meal_recipe.meal.name%>
   </p>
 
   <p class="my-5">
-  <strong class="block font-medium mb-1">Ingredients:</strong>
+   <strong> Meal Recipe:</strong><br/>
+   <%= meal_recipe.name %>
+  </p>
+  <p class="my-5">
+  <strong >Ingredients:</strong><br/>
   <% if meal_recipe.ingredients.present? %>
     <%= meal_recipe.ingredients %>
   <% else %>
@@ -19,8 +18,9 @@
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this meal recipe", meal_recipe, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show this meal recipe", meal_recipe, data: {turbo_frame: "_top"},class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this meal recipe', edit_meal_recipe_path(meal_recipe), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Remove this meal recipe", meal_recipe_path(meal_recipe),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'},class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>   
     <hr class="mt-6">
   <% end %>
-</div>
+<% end %>

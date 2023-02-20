@@ -8,9 +8,9 @@
 
     <%= link_to 'Edit this meal_recipe', edit_meal_recipe_path(@meal_recipe), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
-      <%= button_to 'Destroy this meal_recipe', meal_recipe_path(@meal_recipe), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <%= button_to 'Destroy this meal_recipe', meal_recipe_path(@meal_recipe), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
     <%= link_to 'Add origin', new_recipe_origin_path(meal_recipe_id: @meal_recipe.id) ,class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"%>
-    <%= link_to 'Back to meals', meal_recipes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Back to meal recipes', meal_recipes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<%= form_with(model: meal_recipe, class: "contents") do |form| %>
+<%= form_with(id: "meal_recipe_form",model: meal_recipe, class: "contents") do |form| %>
   <%= render 'shared/messages', object: @meal_recipe %>
 
   <div class="my-5">
@@ -6,9 +6,15 @@
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div>
-    <%= form.hidden_field :meal_id, value: params[:meal_id]%>
+  <% if params[:meal_id].present? %>
+  <%= form.hidden_field :meal_id, value: params[:meal_id] %>
+<% else %>
+  <div class="my-5">
+    <%= form.label :meal_id, "Meal" %>
+    <%= form.collection_select :meal_id, Meal.all, :id, :name, { prompt: "Select a meal" }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
+<% end %>
+
 
   <div class="my-5">
     <%= form.label :ingredients %>

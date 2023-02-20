@@ -25,6 +25,7 @@ class RecipeOriginsController < ApplicationController
 
     respond_to do |format|
       if @recipe_origin.save
+        format.turbo_stream
         format.html { redirect_to recipe_origin_url(@recipe_origin), notice: "Recipe origin was successfully created." }
 
       else
@@ -37,6 +38,7 @@ class RecipeOriginsController < ApplicationController
   def update
     respond_to do |format|
       if @recipe_origin.update(recipe_origin_params)
+        format.turbo_stream
         format.html { redirect_to recipe_origin_url(@recipe_origin), notice: "Recipe origin was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,7 +51,9 @@ class RecipeOriginsController < ApplicationController
     @recipe_origin.destroy
 
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to recipe_origins_url, notice: "Recipe origin was successfully destroyed." }
+
     end
   end
 

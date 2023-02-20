@@ -20,6 +20,7 @@ class MealsController < ApplicationController
 
     respond_to do |format|
       if @meal.save
+        format.turbo_stream
         format.html { redirect_to meal_url(@meal), notice: "Meal was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -31,8 +32,8 @@ class MealsController < ApplicationController
   def update
     respond_to do |format|
       if @meal.update(meal_params)
+
         format.html { redirect_to meal_url(@meal), notice: "Meal was successfully updated." }
-        render "show"
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -43,6 +44,7 @@ class MealsController < ApplicationController
     @meal.destroy
 
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to meals_url, notice: "Meal was successfully destroyed." }
     end
   end

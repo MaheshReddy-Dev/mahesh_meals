@@ -1,15 +1,18 @@
-<%= form_with(model: recipe_origin, class: "contents") do |form| %>
+<%= form_with(id: "recipe_origin_form",model: recipe_origin, class: "contents") do |form| %>
   <%= render 'shared/messages', object: @recipe_origin %>
   <div class="my-5">
     <%= form.label :name %>
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <% if form.object.new_record? %>
-    <div>
-      <%= form.hidden_field :meal_recipe_id, value: params[:meal_recipe_id]%>
-    </div>
-  <% end %>
+  <% if params[:meal_recipe_id].present? %>
+   <%= form.hidden_field :meal_recipe_id, value: params[:meal_recipe_id] %>
+  <% else %>
+  <div class="my-5">
+    <%= form.label :meal_recipe_id, "Meal Recipes" %>
+    <%= form.collection_select :meal_recipe_id, MealRecipe.all, :id, :name, { prompt: "Select a meal" }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+<% end %>
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>

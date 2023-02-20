@@ -5,9 +5,11 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Meal recipes</h1>
-    <%= link_to 'Back to meals', meals_path, class: "rounded-lg py-3 px-5 bg-red-600 text-white block font-medium" %>
+    <%= link_to 'view meals', meals_path, class: "rounded-lg py-3 px-5 bg-red-600 text-white block font-medium" %>
     <%= link_to 'View recipe origins', recipe_origins_path, class: "rounded-lg py-3 px-5 bg-yellow-600 text-white block font-medium" %>
+    <%= turbo_frame_tag "new_meal_recipe" do %>
     <%= link_to 'New meal recipe', new_meal_recipe_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <% end %> 
   </div>
 
   <div id="meal_recipes" class="min-w-full">

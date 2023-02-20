@@ -7,7 +7,9 @@
     <h1 class="font-bold text-4xl">Meals</h1>
     <%= link_to 'View meal recipes', meal_recipes_path, class: "rounded-lg py-3 px-5 bg-orange-600 text-white block font-medium mr-4" %>
     <%= link_to 'View recipe origins', recipe_origins_path, class: "rounded-lg py-3 px-5 bg-purple-600 text-white block font-medium" %>
+    <%= turbo_frame_tag "new_meal" do %>
     <%= link_to 'New meal', new_meal_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <% end %>
   </div>
   
 

@@ -1,0 +1,6 @@
+<%= turbo_stream.prepend "meal_recipes" do %>
+    <%= render @meal_recipe %>
+<% end %>
+<%= turbo_stream.replace "meal_recipe_form" do %>
+ <%= render "form", meal_recipe: MealRecipe.new %>
+<% end %>
