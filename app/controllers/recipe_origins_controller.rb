@@ -22,11 +22,14 @@ class RecipeOriginsController < ApplicationController
   
   def create
     @recipe_origin = RecipeOrigin.new(recipe_origin_params)
-
+  
     respond_to do |format|
       if @recipe_origin.save
-        format.html { redirect_to recipe_origin_url(@recipe_origin), notice: "Recipe origin was successfully created." }
-
+        if request.referrer == recipe_origins_url
+          format.turbo_stream { flash.now[:notice] = "#{@recipe_origin.name} was successfully Updated." }
+        else
+          format.html { redirect_to recipe_origin_url(@meal_recipe), notice: "#{@recipe_origin.name} was successfully created." }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
       end

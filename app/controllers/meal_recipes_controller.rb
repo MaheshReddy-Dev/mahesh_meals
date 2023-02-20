@@ -16,17 +16,22 @@ class MealRecipesController < ApplicationController
   def edit
   end
 
-  def create
-    @meal_recipe = MealRecipe.new(meal_recipe_params)
+def create
+  @meal_recipe = MealRecipe.new(meal_recipe_params)
 
-    respond_to do |format|
-      if @meal_recipe.save
-        format.html { redirect_to meal_recipe_url(@meal_recipe), notice: "meal recipe was successfully created." }
+  respond_to do |format|
+    if @meal_recipe.save
+      if request.referrer == meal_recipes_url
+        format.turbo_stream { flash.now[:notice] = "#{@meal_recipe.name} was successfully Updated." }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to meal_recipe_url(@meal_recipe), notice: "Meal recipe was successfully created." }
       end
+    else
+      format.html { render :new, status: :unprocessable_entity }
     end
   end
+end
+  
 
   def update
     respond_to do |format|
