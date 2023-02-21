@@ -40,8 +40,11 @@ class RecipeOriginsController < ApplicationController
   def update
     respond_to do |format|
       if @recipe_origin.update(recipe_origin_params)
-        format.turbo_stream {flash.now[:notice] = "#{@recipe_origin.name} was successfully Updated."}
-        format.html { redirect_to recipe_origin_url(@recipe_origin), notice: "Recipe origin was successfully updated." }
+        if params[:from_show]
+          format.html { redirect_to recipe_origin_url(@recipe_origin), notice: "recipe_origin was successfully updated." }
+        else
+          format.turbo_stream { flash.now[:notice] = "#{@recipe_origin.name} was successfully updated." }
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
       end

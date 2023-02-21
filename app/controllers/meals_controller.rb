@@ -32,13 +32,17 @@ class MealsController < ApplicationController
   def update
     respond_to do |format|
       if @meal.update(meal_params)
-        format.turbo_stream {flash.now[:notice] = "#{@meal.name} was successfully Updated."}
-        format.html { redirect_to meal_url(@meal), notice: "Meal was successfully updated." }
+        if params[:from_show]
+          format.html { redirect_to meal_url(@meal), notice: "Meal was successfully updated." }
+        else
+          format.turbo_stream { flash.now[:notice] = "#{@meal.name} was successfully updated." }
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
+  
 
   def destroy
     @meal.destroy

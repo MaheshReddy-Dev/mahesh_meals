@@ -33,16 +33,19 @@ def create
 end
   
 
-  def update
-    respond_to do |format|
-      if @meal_recipe.update(meal_recipe_params)
-        format.turbo_stream {flash.now[:notice] = "#{@meal_recipe.name} was successfully Updated."}
-        format.html { redirect_to meal_recipe_url(@meal_recipe), notice: "Meal recipe was successfully updated." }
+def update
+  respond_to do |format|
+    if @meal_recipe.update(meal_recipe_params)
+      if params[:from_show]
+        format.html { redirect_to meal_recipe_url(@meal_recipe), notice: "meal_recipe was successfully updated." }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.turbo_stream { flash.now[:notice] = "#{@meal_recipe.name} was successfully updated." }
       end
+    else
+      format.html { render :edit, status: :unprocessable_entity }
     end
   end
+end
 
   def destroy
     @meal_recipe.destroy
