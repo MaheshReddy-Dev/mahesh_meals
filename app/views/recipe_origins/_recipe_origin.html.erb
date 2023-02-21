@@ -10,6 +10,7 @@
   </p>
 
   <% if action_name != "show" %>
+  <%= link_to 'Back to recipe origins', recipe_origins_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium", data: { turbo_frame: '_top' } %>
     <%= link_to "Show this recipe origin",recipe_origin, data: {turbo_frame: "_top"}, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this recipe origin', edit_recipe_origin_path(recipe_origin), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Remove this recipe origin ", recipe_origin_url(recipe_origin),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure want to delete?'},class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"%>
